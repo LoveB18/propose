@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#ff758c" />
+  <title>A Special Message For You 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="particles-bg" id="particlesBg" aria-hidden="true"></div>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- Audio Elements (Place your MP3s in the audio/ folder; built-in melody plays if missing) -->
+  <audio id="yesAudio" src="audio/yes-song.mp3" preload="auto" loop></audio>
+  <audio id="noAudio" src="audio/no-song.mp3" preload="auto" loop></audio>
+
+  <main class="page-wrapper">
+    <!-- Stage 1: Name Entry -->
+    <section class="card fade-in" id="nameStage">
+      <span class="badge">💌 Just for you</span>
+      <div class="hero-icon pulse">💌</div>
+      <h1 class="script-title">Hey there!</h1>
+      <p class="subtitle">Before I show you something special, please enter your name below.</p>
+
+      <form id="nameForm" autocomplete="off">
+        <div class="input-group">
+          <input
+            type="text"
+            id="visitorName"
+            name="name"
+            maxlength="40"
+            placeholder="Enter your name..."
+            required
+            autofocus
+          />
+        </div>
+        <button type="submit" class="btn btn-primary" id="continueBtn">
+          Continue ✨
+        </button>
+      </form>
+    </section>
+
+    <!-- Stage 2: Interactive Valentine Question -->
+    <section class="card hidden" id="questionStage">
+      <div class="hero-icon bounce">🧸💖</div>
+      <p class="recipient-tag" id="recipientHeading">Dear Someone Special,</p>
+      <h1 class="script-title question-title">Will you be my Valentine?</h1>
+      <p class="subtitle compact">Take a moment and answer from your heart ❤️</p>
+
+      <div class="choice-buttons">
+        <button type="button" class="btn btn-yes" id="yesBtn">Yes! 💖</button>
+        <button type="button" class="btn btn-no" id="noBtn">No 💔</button>
+      </div>
+    </section>
+
+    <!-- Stage 3A: YES Celebration (Bengali Love Proposal + Hindi Love Song) -->
+    <section class="card hidden" id="yesStage">
+      <span class="badge">💖 আমি জানতাম তুমি হ্যাঁ বলবে!</span>
+      <div class="hero-icon bounce">🥰🌹</div>
+      <h1 class="bengali-title" id="yesTitle">খুব ভালোবাসি তোমায় ❤️</h1>
+
+      <div class="music-bar" id="yesMusicBar">
+        <span class="music-label" id="yesMusicLabel">🎵 Playing Love Song...</span>
+        <button type="button" class="music-toggle" id="yesMusicToggle">Pause ⏸️</button>
+      </div>
+
+      <div class="message-box bengali-text" id="bengaliProposalBox"></div>
+      <div class="sender-sign bengali-text">— আমি চিরকাল তোমারই ❤️</div>
+    </section>
+
+    <!-- Stage 3B: NO Sad Screen (Sad Note + Sad Song) -->
+    <section class="card card-sad hidden" id="noStage">
+      <span class="badge badge-sad">🥀 I understand</span>
+      <div class="hero-icon">🥺🌧️</div>
+      <h1 class="script-title sad-title" id="noTitle">It's Okay...</h1>
+
+      <div class="music-bar music-bar-sad" id="noMusicBar">
+        <span class="music-label" id="noMusicLabel">🎵 Playing Sad Song...</span>
+        <button type="button" class="music-toggle music-toggle-sad" id="noMusicToggle">Pause ⏸️</button>
+      </div>
+
+      <div class="message-box message-box-sad" id="sadNoteBox"></div>
+      <div class="sender-sign sad-sign">— Always wishing you happiness 🥀</div>
+
+      <button type="button" class="btn btn-reconsider" id="reconsiderBtn">
+        Changed your mind? 💌
+      </button>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
