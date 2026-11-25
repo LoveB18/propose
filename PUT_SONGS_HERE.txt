@@ -1,0 +1,6 @@
+Place your two MP3 songs in this folder with these exact file names:
+
+1. yes-song.mp3  -> Your Hindi love song (plays when they click YES)
+2. no-song.mp3   -> Your sad song (plays when they click NO)
+
+If you don't add MP3 files yet, the website will automatically play a built-in romantic melody (on YES) or soft sad melody (on NO) so it works immediately!
