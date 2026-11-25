@@ -1,15 +1,14 @@
 /* =========================================
    Mobile-First Valentine Website v2
-   - Sends visitor name to trishirmondal@gmail.com on Continue
+   - Sends visitor name via FormSubmit token on Continue
    - Working YES (Bengali Love Proposal + Hindi Love Song)
-   - Working NO (Sad Note + Sad Song)
+   - Working NO (Bengali Sad Note + Sad Song)
    ========================================= */
 
 (function () {
   "use strict";
 
-  const TARGET_EMAIL = "trishirmondal@gmail.com";
-  const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${TARGET_EMAIL}`;
+  const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/41287bc0085588dc63890b8f4a2bbb16";
 
   let visitorName = "";
   let particleMode = "hearts"; // "hearts" or "rain"
@@ -29,10 +28,12 @@
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify(payload)
-    }).catch(() => {
-      // Fail silently so user flow is never blocked
-    });
+      body: JSON.stringify(payload),
+      keepalive: true
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("FormSubmit:", data))
+      .catch((err) => console.error("FormSubmit error:", err));
   }
 
   // --- Toast Helper ---
@@ -304,7 +305,7 @@
 
       visitorName = entered;
 
-      // Send visitor's name automatically to trishirmondal@gmail.com
+      // Send visitor's name automatically to email
       sendEmailNotification(`💌 Valentine Site Visitor: ${visitorName}`, {
         Visitor_Name: visitorName,
         Action: "Clicked Continue",
@@ -345,7 +346,7 @@
       setTimeout(launchConfetti, 850);
     });
 
-    // Stage 2 -> Stage 3B: NO Clicked (Sad Note + Sad Song)
+    // Stage 2 -> Stage 3B: NO Clicked (Bengali Sad Note + Sad Song)
     noBtn.addEventListener("click", () => {
       document.body.classList.add("sad-mode");
       particleMode = "rain";
@@ -392,3 +393,4 @@
     });
   });
 })();
+```[cite: 14, 20]
