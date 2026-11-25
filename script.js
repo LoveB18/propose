@@ -8,7 +8,7 @@
 (function () {
   "use strict";
 
-  const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/41287bc0085588dc63890b8f4a2bbb16";
+  const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/trishirmondal@gmail.com";
 
   let visitorName = "";
   let particleMode = "hearts"; // "hearts" or "rain"
